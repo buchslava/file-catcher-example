@@ -1,0 +1,31 @@
+{
+  "name": "file-catcher-example",
+  "version": "1.0.0",
+  "description": "Simple file catcher example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buchslava/file-catcher-example.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "busboy",
+    "express"
+  ],
+  "author": "Vyacheslav Chub",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/buchslava/file-catcher-example/issues"
+  },
+  "homepage": "https://github.com/buchslava/file-catcher-example#readme",
+  "dependencies": {
+    "busboy": "^0.2.11",
+    "express": "^4.13.3",
+    "fs": "0.0.2",
+    "memory-streams": "^0.1.0",
+    "path": "^0.12.7"
+  }
+}
