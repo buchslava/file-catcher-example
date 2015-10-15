@@ -26,22 +26,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-var whitelist = ['http://valor-software.github.io'];
-
-var corsOptionsDelegate = function(req, callback){
-  var corsOptions;
-  if(whitelist.indexOf(req.header('Origin')) !== -1){
-    corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
-  }else{
-    corsOptions = { origin: false }; // disable CORS for this request
-  }
-  callback(null, corsOptions); // callback expects two parameters: error and options
-};
-
-app.get('/', function (req, res) {
-  res.end('Ok!');
-});
-
 // cors(corsOptionsDelegate)
 
 app.post('/api', function (req, res) {
