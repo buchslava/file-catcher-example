@@ -10,7 +10,7 @@ var app = express();
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io/ng2-file-upload');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -20,13 +20,13 @@ app.use(function (req, res, next) {
 
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', false);
+    res.setHeader('Access-Control-Allow-Credentials', true);
 
     // Pass to next layer of middleware
     next();
 });
 
-var whitelist = ['http://valor-software.github.io/ng2-file-upload', 'http://localhost:8080'];
+var whitelist = ['http://valor-software.github.io'];
 
 var corsOptionsDelegate = function(req, callback){
   var corsOptions;
