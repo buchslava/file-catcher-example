@@ -7,7 +7,7 @@ var streams = require('memory-streams');
 
 var app = express();
 
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
@@ -24,7 +24,7 @@ app.use(function (req, res, next) {
 
     // Pass to next layer of middleware
     next();
-});
+});*/
 
 var whitelist = ['http://valor-software.github.io'];
 
@@ -60,7 +60,8 @@ app.post('/api', function (req, res) {
   });
 
   busboy.on('finish', function () {
-    res.redirect('back');
+    // res.redirect('back');
+    res.end('ok');
   });
   req.pipe(busboy);
 });
