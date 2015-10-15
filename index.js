@@ -7,11 +7,19 @@ var streams = require('memory-streams');
 
 var app = express();
 
+var whitelist = ['http://valor-software.github.io/ng2-file-upload/', 'http://localhost:8080'];
+var corsOptions = {
+  origin: function(origin, callback){
+    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(null, originIsWhitelisted);
+  }
+};
+
 app.get('/', function (req, res) {
   res.end('Ok!');
 });
 
-app.post('/api', cors(), function (req, res) {
+app.post('/api', cors(corsOptions), function (req, res) {
   var fstream;
   var files = [];
   var busboy = new Busboy({headers: req.headers});
