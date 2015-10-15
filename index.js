@@ -10,7 +10,7 @@ var app = express();
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io/ng2-file-upload');
+    res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -42,7 +42,9 @@ app.get('/', function (req, res) {
   res.end('Ok!');
 });
 
-app.post('/api', cors(corsOptionsDelegate), function (req, res) {
+// cors(corsOptionsDelegate)
+
+app.post('/api', function (req, res) {
   var fstream;
   var files = [];
   var busboy = new Busboy({headers: req.headers});
