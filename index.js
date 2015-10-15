@@ -7,7 +7,7 @@ var streams = require('memory-streams');
 
 var app = express();
 
-var whitelist = ['http://valor-software.github.io/ng2-file-upload/', 'http://localhost:8080'];
+var whitelist = ['http://valor-software.github.io/ng2-file-upload', 'http://localhost:8080'];
 
 var corsOptionsDelegate = function(req, callback){
   var corsOptions;
