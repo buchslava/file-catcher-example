@@ -1,7 +1,6 @@
 var express = require('express');
 var Busboy = require('busboy');
 var path = require('path');
-var cors = require('cors');
 var fs = require('fs');
 var streams = require('memory-streams');
 
@@ -25,8 +24,6 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
-
-// cors(corsOptionsDelegate)
 
 app.post('/api', function (req, res) {
   var fstream;
