@@ -1,6 +1,7 @@
 var express = require('express');
 var Busboy = require('busboy');
 var path = require('path');
+var cors = require('cors');
 var fs = require('fs');
 var streams = require('memory-streams');
 
@@ -10,7 +11,7 @@ app.get('/', function (req, res) {
   res.end('Ok!');
 });
 
-app.post('/api', function (req, res) {
+app.post('/api', cors(), function (req, res) {
   var fstream;
   var files = [];
   var busboy = new Busboy({headers: req.headers});

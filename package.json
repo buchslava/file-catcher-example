@@ -27,6 +27,7 @@
   "homepage": "https://github.com/buchslava/file-catcher-example#readme",
   "dependencies": {
     "busboy": "^0.2.11",
+    "cors": "^2.7.1",
     "express": "^4.13.3",
     "fs": "0.0.2",
     "memory-streams": "^0.1.0",
