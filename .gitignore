@@ -5,6 +5,8 @@ logs
 # Uploads directory
 uploads
 
+.idea
+
 # Runtime data
 pids
 *.pid

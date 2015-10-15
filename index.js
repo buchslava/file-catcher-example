@@ -6,8 +6,8 @@ var streams = require('memory-streams');
 
 var app = express();
 
-app.get('/api', function (req, res) {
-  res.end('ok!');
+app.get('/', function (req, res) {
+  res.end('Ok!');
 });
 
 app.post('/api', function (req, res) {
