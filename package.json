@@ -23,7 +23,7 @@
   },
   "engines": {
     "npm": "2.1.x"
-  }
+  },
   "homepage": "https://github.com/buchslava/file-catcher-example#readme",
   "dependencies": {
     "busboy": "^0.2.11",
