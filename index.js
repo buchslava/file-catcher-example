@@ -7,10 +7,10 @@ var streams = require('memory-streams');
 
 var app = express();
 
-/*app.use(function (req, res, next) {
+app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+    res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -24,7 +24,7 @@ var app = express();
 
     // Pass to next layer of middleware
     next();
-});*/
+});
 
 var whitelist = ['http://valor-software.github.io'];
 
