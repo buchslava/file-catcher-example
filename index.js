@@ -31,6 +31,11 @@ app.use(multer({
         console.log(err);
       }
     });
+  },
+  limits: {
+    fields: 4,
+    files: 4,
+    fileSize: 512000
   }
 }));
 
