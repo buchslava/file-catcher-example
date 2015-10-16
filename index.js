@@ -15,6 +15,10 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.get('/api', function (req, res) {
+  res.end('file catcher example');
+});
+
 app.post('/api', function (req, res) {
   var fstream;
   var files = [];
