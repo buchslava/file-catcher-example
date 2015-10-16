@@ -8,7 +8,7 @@ var app = express();
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io');
-    res.setHeader('Access-Control-Allow-Methods', 'POST GET OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', '*');
     res.setHeader('Access-Control-Allow-Headers', 'origin, x-requested-with, content-type');
     res.setHeader('Access-Control-Request-Headers', 'access-control-allow-origin, content-type');
     res.setHeader('Access-Control-Allow-Credentials', true);
