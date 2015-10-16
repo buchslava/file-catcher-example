@@ -1,44 +1,55 @@
 var express = require('express');
-var Busboy = require('busboy');
-var path = require('path');
+var multer = require('multer');
 var fs = require('fs');
-var streams = require('memory-streams');
-
 var app = express();
 
+var DIR = './uploads/';
+
+var upload = multer({dest: DIR});
+
 app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io');
-    res.setHeader('Access-Control-Allow-Methods', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'origin, x-requested-with, content-type');
-    res.setHeader('Access-Control-Request-Headers', 'access-control-allow-origin, content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
+  res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io');
+  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
 });
+
+app.use(multer({
+  dest: DIR,
+  rename: function (fieldname, filename) {
+    return filename + Date.now();
+  },
+  onFileUploadStart: function (file) {
+    console.log(file.originalname + ' is starting ...');
+  },
+  onFileUploadComplete: function (file) {
+    console.log(file.fieldname + ' uploaded to  ' + file.path);
+
+    fs.unlink(__dirname + '/' + file.path, function (err) {
+      if (err) {
+        console.log(err);
+      }
+    });
+  }
+}));
 
 app.get('/api', function (req, res) {
   res.end('file catcher example');
 });
 
 app.post('/api', function (req, res) {
-  var fstream;
-  var files = [];
-  var busboy = new Busboy({headers: req.headers});
-  busboy.on('file', function (fieldname, file, filename) {
-    // fstream = fs.createWriteStream(__dirname + '/uploads/' + filename);
-    // memory stub
-    fstream = new streams.WritableStream();
-    file.pipe(fstream);
-    fstream.on('close', function () {
-      console.log('file ' + filename + ' uploaded');
-      files.push(filename);
-      file.resume();
-    });
-  });
+  upload(req, res, function (err) {
+    if (err) {
+      return res.end(err.toString());
+    }
 
-  busboy.on('finish', function () {
-    res.end('ok');
+    res.end('File is uploaded');
   });
-  req.pipe(busboy);
 });
 
-app.listen(process.env.PORT || 3000);
+var PORT = process.env.PORT || 3000;
+
+app.listen(PORT, function () {
+  console.log('Working on port ' + PORT);
+});
